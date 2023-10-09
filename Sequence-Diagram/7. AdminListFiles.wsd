@@ -1,0 +1,52 @@
+@startuml Admin List File
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin List File
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "S3" as S3
+participant "MSSQL" as Database
+
+User1 -> Frontend: List Files
+
+Frontend -> Microservice: GET /v1/files
+
+Microservice -> Database: Retrive files from database
+
+alt Success
+
+Database --> Microservice: Return files list
+
+Frontend <-- Microservice: Return files list
+
+Frontend -> S3: Get image data from S3
+
+	alt Success
+
+	S3 --> Frontend: Return image data
+
+	User1 <-- Frontend: Return files list and display image from S3
+
+	else #LightYellow
+
+	S3 --> Frontend: Return error
+
+	User1 <-- Frontend: Return files list and display images error
+
+	end
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
+
+@enduml

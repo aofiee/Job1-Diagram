@@ -1,0 +1,42 @@
+@startuml User save/update firebase uuid and UDID from device token
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User save/update firebase uuid and UDID from device token
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Firebase SDK" as FirebaseSDK
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Authenticate with firebase
+
+Frontend -> FirebaseSDK: Get firebase token
+
+FirebaseSDK --> Frontend: Return firebase token
+
+Frontend -> Microservice: (POST /v1/user/login) \nSend firebase token
+
+Microservice -> Database: Save firebase uuid and UDID device token \nfrom firebase token to user table
+
+alt success 
+
+Microservice <-- Database: Return success
+
+Frontend <-- Microservice: Return success
+
+User1 <-- Frontend: Return success
+
+else #LightYellow
+
+Microservice <-- Database: Return fail
+
+Frontend <-- Microservice: Return fail
+
+User1 <-- Frontend: Return fail
+
+end
+
+@enduml

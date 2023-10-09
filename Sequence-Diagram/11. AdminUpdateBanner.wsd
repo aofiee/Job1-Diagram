@@ -1,0 +1,26 @@
+@startuml Admin Update Banner
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Update Banner
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Update banner data
+
+Frontend -> Microservice: PUT /v1/banner/:id
+
+Microservice -> Database: Update banner data
+
+Database --> Microservice: Return banner data
+
+Microservice --> Frontend: Return banner data
+
+Frontend --> User1: Return banner data
+
+
+@enduml

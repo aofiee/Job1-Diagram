@@ -1,0 +1,26 @@
+@startuml Admin Delete Banner
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Delete Banner
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Delete banner data
+
+Frontend -> Microservice: DELETE /v1/banner/:id
+
+Microservice -> Database: Delete banner data
+
+Database --> Microservice: Return success
+
+Microservice --> Frontend: Return success
+
+Frontend --> User1: Return success
+
+
+@enduml

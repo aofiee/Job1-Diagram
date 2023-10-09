@@ -1,0 +1,37 @@
+@startuml User Read Inbox Message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User Read Inbox Message
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Click on Inbox
+
+Frontend -> Microservice: GET /v1/user/inbox/:id
+
+Microservice -> Database: Update inbox message id to mark as read
+
+alt Success
+
+Microservice <-- Database: Return message data
+
+Frontend <-- Microservice: Return message data
+
+User1 <-- Frontend: Return message data
+
+else #LightYellow
+
+Microservice <-- Database: Return error
+
+Frontend <-- Microservice: Return error
+
+User1 <-- Frontend: Return error
+
+end
+
+@enduml

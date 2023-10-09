@@ -1,0 +1,45 @@
+@startuml Admin Upload File
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Upload File
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "S3" as S3
+participant "MSSQL" as Database
+
+User1 -> Frontend: Select image to upload
+
+Frontend -> Microservice: POST /v1/upload
+
+Microservice -> S3: Upload image to S3
+
+alt Upload success
+	S3 --> Microservice: Return image URL
+	Microservice -> Database: Save image url to files table
+
+	alt Success
+	Database --> Microservice: Return success
+
+	Frontend <-- Microservice: Return success
+
+	User1 <-- Frontend: Return success
+	else #LightYellow
+
+	Database --> Microservice: Return error
+
+	Frontend <-- Microservice: Return error
+
+	User1 <-- Frontend: Return error
+	end
+else #LightYellow
+	S3 --> Microservice: Return error
+	Microservice --> Frontend: Return error
+	User1 <-- Frontend: Return error
+end
+
+
+@enduml

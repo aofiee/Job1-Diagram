@@ -1,0 +1,26 @@
+@startuml Admin Update Notification
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Update Notification
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Update Notification
+
+Frontend -> Microservice: PUT /v1/notification/:id
+
+Microservice -> Database: Update Notification
+
+Database --> Microservice: Return notification data
+
+Microservice --> Frontend: Return notification data
+
+Frontend --> User1: Return notification data
+
+
+@enduml

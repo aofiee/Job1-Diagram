@@ -1,0 +1,26 @@
+@startuml Admin Create Notification
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Create Notification
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Create Notification
+
+Frontend -> Microservice: POST /v1/notification
+
+Microservice -> Database: Save Notification
+
+Database --> Microservice: Return notification data
+
+Microservice --> Frontend: Return notification data
+
+Frontend --> User1: Return notification data
+
+
+@enduml

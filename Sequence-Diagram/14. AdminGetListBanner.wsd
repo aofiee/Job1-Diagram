@@ -1,0 +1,26 @@
+@startuml Frontend Get List Banner
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Frontend Get List Banner
+actor "Admin" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get banner by id
+
+Frontend -> Microservice: GET /v1/landingpage/banners
+
+Microservice -> Database: Get list 3 banner data
+
+Database --> Microservice: Return list banner data
+
+Microservice --> Frontend: Return list banner data
+
+Frontend --> User1: Return list banner data
+
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml User Retrieve Inbox Message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User Retrieve Inbox Message
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Click on Inbox
+
+Frontend -> Microservice: GET /v1/user/inbox
+
+Microservice -> Database: Get inbox message of user id
+
+alt success
+
+Microservice <-- Database: Return inbox message json object \nwith pagination
+
+Frontend <-- Microservice: Return inbox message json object \nwith pagination
+
+User1 <-- Frontend: Return inbox message json object \nwith pagination
+
+else #LightYellow
+
+Microservice <-- Database: Return error message
+
+Frontend <-- Microservice: Return error message
+
+User1 <-- Frontend: Return error message
+
+end
+
+@enduml

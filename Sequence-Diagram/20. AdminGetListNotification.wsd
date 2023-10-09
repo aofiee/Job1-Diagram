@@ -1,0 +1,26 @@
+@startuml Admin Get List Notification
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Admin Get List Notification
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get List Notification
+
+Frontend -> Microservice: GET /v1/notifications
+
+Microservice -> Database: Get Notification
+
+Database --> Microservice: Return notification list data and pagination
+
+Microservice --> Frontend: Return notification list data and pagination
+
+Frontend --> User1: Return notification list data and pagination
+
+
+@enduml
