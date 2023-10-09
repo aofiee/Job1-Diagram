@@ -16,11 +16,22 @@ Frontend -> Microservice: DELETE /v1/notification/:id
 
 Microservice -> Database: Delete Notification
 
+alt success
+
 Database --> Microservice: Return success
 
 Microservice --> Frontend: Return success
 
 Frontend --> User1: Return success
 
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
 
 @enduml

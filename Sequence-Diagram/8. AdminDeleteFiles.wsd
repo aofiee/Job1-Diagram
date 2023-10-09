@@ -22,11 +22,25 @@ alt Success
 
 	Microservice -> S3: Delete files from S3
 
+	alt Success
+
 	S3 --> Microservice: Return success
 
 	Microservice --> Frontend: Return success
 
 	Frontend --> User1: Return success
+
+	else #LightYellow
+
+	S3 --> Microservice: Return error
+
+	Microservice --> Microservice: Rollback Database
+
+	Microservice --> Frontend: Return error
+
+	Frontend --> User1: Return error
+
+	end
 else #LightYellow
 	Database --> Microservice: Return error
 

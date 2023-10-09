@@ -16,11 +16,22 @@ Frontend -> Microservice: PUT /v1/notification/:id
 
 Microservice -> Database: Update Notification
 
+alt Success
+
 Database --> Microservice: Return notification data
 
 Microservice --> Frontend: Return notification data
 
 Frontend --> User1: Return notification data
 
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
 
 @enduml

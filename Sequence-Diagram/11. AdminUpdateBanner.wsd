@@ -16,11 +16,22 @@ Frontend -> Microservice: PUT /v1/banner/:id
 
 Microservice -> Database: Update banner data
 
+alt Success
+
 Database --> Microservice: Return banner data
 
 Microservice --> Frontend: Return banner data
 
 Frontend --> User1: Return banner data
 
+else #LightYellow
+
+Database --> Microservice: Return error message
+
+Microservice --> Frontend: Return error message
+
+Frontend --> User1: Return error message
+
+end
 
 @enduml

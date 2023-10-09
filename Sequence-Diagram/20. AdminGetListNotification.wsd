@@ -16,11 +16,22 @@ Frontend -> Microservice: GET /v1/notifications
 
 Microservice -> Database: Get Notification
 
+alt Success
+
 Database --> Microservice: Return notification list data and pagination
 
 Microservice --> Frontend: Return notification list data and pagination
 
 Frontend --> User1: Return notification list data and pagination
 
+else #LightYellow
+
+Database --> Microservice: Return error message
+
+Microservice --> Frontend: Return error message
+
+Frontend --> User1: Return error message
+
+end
 
 @enduml

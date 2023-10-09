@@ -16,11 +16,23 @@ Frontend -> Microservice: POST /v1/banner
 
 Microservice -> Database: Save banner data
 
+alt Success
+
 Database --> Microservice: Return banner data
 
 Microservice --> Frontend: Return banner data
 
 Frontend --> User1: Return banner data
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
 
 
 @enduml

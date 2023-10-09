@@ -16,11 +16,22 @@ Frontend -> Microservice: GET /v1/landingpage/banners
 
 Microservice -> Database: Get list 3 banner data
 
+alt Success
+
 Database --> Microservice: Return list banner data
 
 Microservice --> Frontend: Return list banner data
 
 Frontend --> User1: Return list banner data
 
+else #LightYellow
+
+Database --> Microservice: Return error message
+
+Microservice --> Frontend: Return error message
+
+Frontend --> User1: Return error message
+
+end
 
 @enduml
