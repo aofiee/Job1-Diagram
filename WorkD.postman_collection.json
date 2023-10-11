@@ -1,0 +1,686 @@
+{
+	"info": {
+		"_postman_id": "6dcd12aa-4f7f-4a7f-bc69-c57067154069",
+		"name": "WorkD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1654411",
+		"_collection_link": "https://speeding-desert-719556.postman.co/workspace/Tridept~cd44b062-62a7-47ee-a182-306c9fba7853/collection/1654411-6dcd12aa-4f7f-4a7f-bc69-c57067154069?action=share&source=collection_link&creator=1654411"
+	},
+	"item": [
+		{
+			"name": "save-update-firebase-UDID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/user/login",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User on/off push notification",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"xxxxxx\",\n    \"allow_notification\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/user/push-notification",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"push-notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user inbox message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/user/inbox",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"inbox"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user inbox message by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/user/inbox/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"inbox",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete inbox message",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deleted_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/user/inbox/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"inbox",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"created_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/upload",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Upload file",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"updated_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/upload",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get files",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/files",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get files by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/files/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"files",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete files by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deleted_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/files/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"files",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Banner",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"created_by\": \"user_id\",\n    \"order\": 0,\n    \"mobile_file_id\": 1,\n    \"desktop_file_id\": 2,\n    \"tablet_file_id\": 3,\n    \"mobile_urlschema\": \"https://\",\n    \"desktop_urlschema\": \"https://\",\n    \"tablet_urlschema\": \"https://\",\n    \"is_landing_page\": false,\n    \"published_date\": \"2023-10-11 10:10:10\",\n    \"expired_date\": \"2023-10-11 10:10:10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/banner",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"banner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Banner",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"updated_by\": \"user_id\",\n    \"order\": 0,\n    \"mobile_file_id\": 1,\n    \"desktop_file_id\": 2,\n    \"tablet_file_id\": 3,\n    \"mobile_urlschema\": \"https://\",\n    \"desktop_urlschema\": \"https://\",\n    \"tablet_urlschema\": \"https://\",\n    \"is_landing_page\": false,\n    \"published_date\": \"2023-10-11 10:10:10\",\n    \"expired_date\": \"2023-10-11 10:10:10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/banner",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"banner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Banner",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"deleted_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/banner/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"banner",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Banner",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/banner/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"banner",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Banner",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/banners",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"banners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Frontend List Banner",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/landingpage/banners",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"landingpage",
+						"banners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"created_by\": \"user_id\",\n    \"headline\": \"สวัสดีวันจันทร์\",\n    \"sub_headline\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\n    \"mobile_file_id\": 1,\n    \"desktop_file_id\": 2,\n    \"tablet_file_id\": 3,\n    \"mobile_urlschema\": \"https://\",\n    \"desktop_urlschema\": \"https://\",\n    \"tablet_urlschema\": \"https://\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ipsum et ligula molestie mollis. Nunc id malesuada ipsum. Aenean et risus rhoncus, tristique leo ac, imperdiet erat. Vivamus suscipit elementum metus non suscipit. Cras semper arcu id auctor maximus. In ornare, tortor et ultricies commodo, ex leo facilisis ligula, a feugiat odio neque vehicula dui. Fusce dignissim sagittis neque, eget ornare ligula mattis ut.\",\n    \"notification_type\": \"content\",\n    \"notification_target_type\": \"All\",\n    \"notification_specific_group\": \"\",\n    \"published_date\": \"2023-10-11 10:10:10\",\n    \"expired_date\": \"2023-10-11 10:10:10\",\n    \"is_modal\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/notification",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Notification",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"updated_by\": \"user_id\",\n    \"headline\": \"สวัสดีวันจันทร์\",\n    \"sub_headline\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\n    \"mobile_file_id\": 1,\n    \"desktop_file_id\": 2,\n    \"tablet_file_id\": 3,\n    \"mobile_urlschema\": \"https://\",\n    \"desktop_urlschema\": \"https://\",\n    \"tablet_urlschema\": \"https://\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ipsum et ligula molestie mollis. Nunc id malesuada ipsum. Aenean et risus rhoncus, tristique leo ac, imperdiet erat. Vivamus suscipit elementum metus non suscipit. Cras semper arcu id auctor maximus. In ornare, tortor et ultricies commodo, ex leo facilisis ligula, a feugiat odio neque vehicula dui. Fusce dignissim sagittis neque, eget ornare ligula mattis ut.\",\n    \"notification_type\": \"content\",\n    \"notification_target_type\": \"All\",\n    \"notification_specific_group\": \"\",\n    \"published_date\": \"2023-10-11 10:10:10\",\n    \"expired_date\": \"2023-10-11 10:10:10\",\n    \"is_modal\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/notification/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"notification",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Notification",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deleted_by\": \"user_id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/notification/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"notification",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notification",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/notification/:id",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"notification",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Notification",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/v1/notifications",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "http://localhost:8443",
+			"type": "string"
+		},
+		{
+			"key": "refresh-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access-token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
