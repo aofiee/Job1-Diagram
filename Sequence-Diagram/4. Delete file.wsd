@@ -1,25 +1,25 @@
-@startuml Admin Upload File
+@startuml Delete File
 skinparam shadowing true
 skinparam sequence {
 	ParticipantBackgroundColor LightYellow
 	ParticipantBorderColor red
 }
-Title: Admin Upload File
+Title: Delete File
 actor "Admin" as User1
 participant "Backoffice" as Frontend
 participant "Microservice" as Microservice
-participant "S3" as S3
+participant "Minio" as S3
 participant "MSSQL" as Database
 
-User1 -> Frontend: Select image to upload
+User1 -> Frontend: Delete file from content
 
-Frontend -> Microservice: POST /v1/upload
+Frontend -> Microservice: DELETE /file/{id}
 
-Microservice -> S3: Upload image to S3
+Microservice -> S3: Delete file from minio
 
-alt Upload success
-	S3 --> Microservice: Return image URL
-	Microservice -> Database: Save image url to files table
+alt Delete success
+	S3 --> Microservice: Return success
+	Microservice -> Database: Delete file from database
 
 	alt Success
 	Database --> Microservice: Return success

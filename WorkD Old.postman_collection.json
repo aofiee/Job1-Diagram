@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "af6dbfdb-9caa-4ffb-8e50-758432fd02ba",
+		"name": "WorkD Old",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1654411",
+		"_collection_link": "https://speeding-desert-719556.postman.co/workspace/Tridept~cd44b062-62a7-47ee-a182-306c9fba7853/collection/1654411-af6dbfdb-9caa-4ffb-8e50-758432fd02ba?action=share&source=collection_link&creator=1654411"
+	},
+	"item": [
+		{
+			"name": "dropdownGroups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/dropdownGroups",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"dropdownGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dropdownRequestServiceStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/dropdownRequestServiceStatus",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"dropdownRequestServiceStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requestServices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/requestServices",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"requestServices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "countRequestServices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/countRequestServices",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"countRequestServices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "peaUserInfo-notwork",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/peaUserInfo",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"peaUserInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "peaLogout-notwork",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/peaLogout",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"peaLogout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requestService-notwork",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"applicationID\": \"-\",\n    \"requestType\": \"\",\n    \"message\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/requestService",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"requestService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRequestServiceStatus-notwork",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"statusId\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/updateRequestServiceStatus",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"updateRequestServiceStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRequestServiceRemark-notwork",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"remark\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/updateRequestServiceRemark",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"updateRequestServiceRemark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRequestServiceRemark-notwork Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"remark\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/refreshToken",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"refreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/auth/token",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/passport",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/auth/passport",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"auth",
+						"passport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "applications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/applications",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "applicationGroups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/applicationGroups",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"applicationGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dropdownApplications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/dropdownApplications",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"dropdownApplications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setApplicationFavorite",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"applicationId\": \"xx\",\n    \"isFavorite\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/setApplicationFavorite",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"setApplicationFavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "passportLogout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/passportLogout",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"passportLogout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "revokePassport",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/revokePassport",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"revokePassport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verifyToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/verifyToken",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"verifyToken"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "http://localhost:8080/workd",
+			"type": "string"
+		}
+	]
+}

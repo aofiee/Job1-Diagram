@@ -1,0 +1,42 @@
+@startuml User save notification token to database
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User save notification token to database
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Firebase SDK" as FirebaseSDK
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Allow Notification \nfrom device
+
+Frontend -> FirebaseSDK: Get device uuid from firebase SDK
+
+FirebaseSDK --> Frontend: Return device uuid
+
+Frontend -> Microservice: (POST /user-notification-token) \nSend device uuid to microservice
+
+Microservice -> Database: Save device uuid to database
+
+alt success 
+
+Microservice <-- Database: Return success
+
+Frontend <-- Microservice: Return success
+
+User1 <-- Frontend: Return success
+
+else #LightYellow
+
+Microservice <-- Database: Return fail
+
+Frontend <-- Microservice: Return fail
+
+User1 <-- Frontend: Return fail
+
+end
+
+@enduml

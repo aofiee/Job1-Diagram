@@ -1,0 +1,47 @@
+@startuml Upload File
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Upload File
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "Minio" as S3
+participant "MSSQL" as Database
+
+User1 -> Frontend: Select image to upload
+
+Frontend -> Microservice: POST /upload
+
+Microservice -> S3: Upload image to Minio
+
+alt Upload success
+	S3 --> Microservice: Return image object key
+	Microservice --> Frontend: Return image object key
+	Frontend -> Microservice: POST /file \n save image object key to database
+	Microservice -> Database: Save image object key to files table
+
+	alt Success
+	Database --> Microservice: Return success
+
+	Frontend <-- Microservice: Return success
+
+	User1 <-- Frontend: Return success
+	else #LightYellow
+
+	Database --> Microservice: Return error
+
+	Frontend <-- Microservice: Return error
+
+	User1 <-- Frontend: Return error
+	end
+else #LightYellow
+	S3 --> Microservice: Return error
+	Microservice --> Frontend: Return error
+	User1 <-- Frontend: Return error
+end
+
+
+@enduml

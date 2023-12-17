@@ -1,0 +1,31 @@
+@startuml Get private file url from Minio
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Get private file url from Minio
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "Minio" as S3
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get private file URL from Minio
+
+Frontend -> Microservice: GET /preview/{bucket}/{object}/{filename}
+
+Microservice -> S3: Get tempolary URL from minio
+
+alt Success
+	S3 --> Microservice: Return URL
+	Microservice --> Frontend: Return URL
+	User1 <-- Frontend: Return URL
+else #LightYellow
+	S3 --> Microservice: Return error
+	Microservice --> Frontend: Return error
+	User1 <-- Frontend: Return error
+end
+
+
+@enduml

@@ -1,25 +1,20 @@
-@startuml User save/update firebase uuid and UDID from device token
+@startuml User delete notification token from database
 skinparam shadowing true
 skinparam sequence {
 	ParticipantBackgroundColor LightYellow
 	ParticipantBorderColor red
 }
-Title: User save/update firebase uuid and UDID from device token
+Title: User delete notification token from database
 actor "User" as User1
 participant "Frontend" as Frontend
-participant "Firebase SDK" as FirebaseSDK
 participant "Microservice" as Microservice
 participant "MSSQL" as Database
 
-User1 -> Frontend: Authenticate with firebase
+User1 -> Frontend: When user \nlogout from application
 
-Frontend -> FirebaseSDK: Get firebase token
+Frontend -> Microservice: (DELETE /user-notification-token/{empID}/{token}) \nSend device uuid to microservice
 
-FirebaseSDK --> Frontend: Return firebase token
-
-Frontend -> Microservice: (POST /v1/user/login) \nSend firebase token
-
-Microservice -> Database: Save firebase uuid and UDID device token \nfrom firebase token to user table
+Microservice -> Database: Delete device uuid from database
 
 alt success 
 
