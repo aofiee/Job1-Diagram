@@ -1,0 +1,38 @@
+
+@startuml Get notification content status
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Get notification content status
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get notification content all status
+
+Frontend -> Microservice: GET /notification/content/status
+
+Microservice -> Database: Get notification content all status
+
+alt Success
+
+Database --> Microservice: Return notification content all status
+
+Microservice --> Frontend: Return notification content all status
+
+Frontend --> User1: Return notification content all status
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml Frontend Get banner data
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Frontend Get banner data
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get banner data
+
+Frontend -> Microservice: GET /banner-content/{id}
+
+Microservice -> Microservice: Check published , \nexpired date and status
+
+Microservice -> Database: Get banner data
+
+alt Success
+
+Database --> Microservice: Return banner data \nand pagination data
+
+Microservice --> Frontend: Return banner data \nand pagination data
+
+Frontend --> User1: Return banner data \nand pagination data
+
+else #LightYellow
+
+Database --> Microservice: Return error message
+
+Microservice --> Frontend: Return error message
+
+Frontend --> User1: Return error message
+
+end
+
+@enduml

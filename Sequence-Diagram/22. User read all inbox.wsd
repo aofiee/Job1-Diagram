@@ -1,0 +1,37 @@
+@startuml User read all inbox message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User read all inbox message
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Read all inbox message
+
+Frontend -> Microservice: PATCH /inbox/read-all
+
+Microservice -> Database: Set status read all to inbox message
+
+alt Success
+
+Microservice <-- Database: Return Success
+
+Frontend <-- Microservice: Return Success
+
+User1 <-- Frontend: Return Success
+
+else #LightYellow
+
+Microservice <-- Database: Return Error
+
+Frontend <-- Microservice: Return Error
+
+User1 <-- Frontend: Return Error
+
+end
+
+@enduml

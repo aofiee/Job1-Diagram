@@ -1,0 +1,40 @@
+@startuml Create Banner
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Create Banner
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Create banner
+
+Frontend -> Microservice: POST /banner
+
+Microservice -> Microservice: Check active <= 3
+
+Microservice -> Database: Save banner data
+
+alt Success
+
+Database --> Microservice: Return banner data
+
+Microservice --> Frontend: Return banner data
+
+Frontend --> User1: Return banner data
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
+
+
+@enduml

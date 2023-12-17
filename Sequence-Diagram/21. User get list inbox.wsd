@@ -1,0 +1,39 @@
+@startuml User get list inbox message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User get list inbox message
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get inbox message of user id
+
+Frontend -> Microservice: GET /inbox
+
+Microservice -> Database: Get inbox message of user id
+
+alt success
+
+Microservice <-- Database: Return inbox message json object \nwith pagination
+
+Microservice -> Microservice: Change notification type\n message status to read
+
+Frontend <-- Microservice: Return inbox message json object \nwith pagination
+
+User1 <-- Frontend: Return inbox message json object \nwith pagination
+
+else #LightYellow
+
+Microservice <-- Database: Return error message
+
+Frontend <-- Microservice: Return error message
+
+User1 <-- Frontend: Return error message
+
+end
+
+@enduml

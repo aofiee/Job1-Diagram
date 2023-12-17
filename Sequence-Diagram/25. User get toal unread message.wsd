@@ -1,0 +1,37 @@
+@startuml User get total message unread from inbox
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User get total message unread from inbox
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get total message unread from inbox
+
+Frontend -> Microservice: GET /inbox/total-unread
+
+Microservice -> Database: Get total message unread from inbox
+
+alt Success
+
+Microservice <-- Database: Return total message unread
+
+Frontend <-- Microservice: Return total message unread
+
+User1 <-- Frontend: Return total message unread
+
+else #LightYellow
+
+Microservice <-- Database: Return error
+
+Frontend <-- Microservice: Return error
+
+User1 <-- Frontend: Return error
+
+end
+
+@enduml

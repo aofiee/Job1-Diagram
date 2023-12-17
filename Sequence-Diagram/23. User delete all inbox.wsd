@@ -1,0 +1,36 @@
+@startuml User delete all inbox message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: User delete all inbox message
+actor "User" as User1
+participant "Frontend" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Delete all inbox message
+
+Frontend -> Microservice: DELETE /inbox/delete-all
+
+Microservice -> Database: Delete all inbox message
+alt Success
+
+Microservice <-- Database: Return Success
+
+Frontend <-- Microservice: Return Success
+
+User1 <-- Frontend: Return Success
+
+else #LightYellow
+
+Microservice <-- Database: Return Error
+
+Frontend <-- Microservice: Return Error
+
+User1 <-- Frontend: Return Error
+
+end
+
+@enduml

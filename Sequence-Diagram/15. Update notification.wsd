@@ -1,0 +1,37 @@
+@startuml Update Notification Content & Message
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Update Notification Content & Message
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Update Notification
+
+Frontend -> Microservice: PATCH /notification
+
+Microservice -> Database: Update Notification
+
+alt Success
+
+Database --> Microservice: Return notification data
+
+Microservice --> Frontend: Return notification data
+
+Frontend --> User1: Return notification data
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
+
+@enduml

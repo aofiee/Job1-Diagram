@@ -1,0 +1,37 @@
+@startuml Get Banner Status
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Get Banner Status
+actor "Admin" as User1
+participant "Backoffice" as Frontend
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+User1 -> Frontend: Get banner status
+
+Frontend -> Microservice: GET /banner/status
+
+Microservice -> Database: Get all banner data status
+
+alt Success
+
+Database --> Microservice: Return all banner status
+
+Microservice --> Frontend: Return all banner status
+
+Frontend --> User1: Return all banner status
+
+else #LightYellow
+
+Database --> Microservice: Return error
+
+Microservice --> Frontend: Return error
+
+Frontend --> User1: Return error
+
+end
+
+@enduml

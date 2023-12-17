@@ -1,0 +1,35 @@
+@startuml Send notification to user
+skinparam shadowing true
+skinparam sequence {
+	ParticipantBackgroundColor LightYellow
+	ParticipantBorderColor red
+}
+Title: Send notification to user
+
+actor "Admin" as User1
+participant "Microservice" as Microservice
+participant "MSSQL" as Database
+
+Microservice -> Microservice: Interval 15 minutes \nto check for new notifications
+
+Microservice -> Database: Get all notifications \nwhere status = 'Waiting' and publishDate <= now()
+
+
+alt Success
+	Database --> Microservice: List of notifications
+
+	Microservice -> Microservice: Check criteria for each notification \nif criteria is met then send notification to user
+	loop for each notification
+		Microservice --> User1: Send notification to user
+		Microservice -> Microservice: Create notification inbox for user
+	end
+
+Microservice -> Database: Update notification status to success
+
+Microservice -> Microservice: Sleep for 15 minutes
+
+else #LightYellow
+	Database --> Microservice: Empty list
+end
+
+@enduml
